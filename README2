@@ -1,0 +1,64 @@
+ZIP & UNZIP = non-binary, standard compression & uncompression
+              minimum program requirements
+./ZIP sample1 = creates a sample1.zip compressed file & deletes sample1
+./UNZIP sample1.zip = uncompress sample1.zip to sample1
+
+c++ -c huffman.cpp
+c++ zip.cpp huffman.o
+c++ unzip.cpp
+
+
+The sample text file for MERCER TENNIS would be: 
+MERCER TENNIS
+
+
+The zip file of MERCER TENNIS would be:
+10
+10 0001
+32 0000
+67 0010
+69 11
+73 0101
+77 0110
+78 100
+82 101
+83 0111
+84 001
+011011101001011101000000111100100010101110001
+
+
+The encoding table for MERCER TENNIS would be:
+
+    ++++ ENCODING TABLE ++++
+Index   Char    Weight  Parent  ChildType
+0       n1      1       10      1
+1       sp      1       10      0
+2       C       1       11      0
+3       E       3       16      1
+4       I       1       11      1
+5       M       1       12      0
+6       N       2       13      0
+7       R       2       13      1
+8       S       1       12      1
+9       T       1       14      1
+10      T1      2       14      0
+11      T2      2       15      0
+12      T3      2       15      1
+13      T4      4       16      0
+14      T5      3       17      0
+15      T6      4       17      1
+16      T7      7       19      1
+17      T8      7       19      0
+18      T9      14      0       -1
+
+The Huffman algorithm would be used to create Huffman trees first creating a node that would hold the ascii value and the frequency it appears in the text file.
+Then, I would compare the sizes, first check for equality. If two nodes have the same frequency, they become the child of a new parent that has a frequency of the 
+two children's combined frequency. Then, I would check for less than or equal frequencies, see if a parent was open and if not begin creating parents of parents 
+until there is only a root through recursion.
+
+The Huffman class is set up to create nodes that holds the ascii value of the char and its frequency. Then, it has recursive methods to check for chars already in 
+the tree, get the frequency of a char, a print method for printing an encoding table, total number of nodes, and to get the compressed code of a char in the tree.
+
+
+
+
